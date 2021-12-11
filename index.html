@@ -17,24 +17,20 @@
     </style>
   </head>
   <body>
-    <div id="counter" class="demo">
-      Counter: {{ counter }}
+    <div id="bind-attribute">
+      <span v-bind:title="message">
+        Hover your mouse over me for a few seconds to see my dynamically bound title!
+      </span>
     </div>
     <script>
-      const Counter = {
+      const AttributeBinding = {
         data() {
           return {
-            counter: 0
-          };
-        },
-        mounted() {
-          setInterval(() => {
-            this.counter++
-          }, 1000)
-        },
-      };
-
-      Vue.createApp(Counter).mount("#counter");
+            message : 'You loaded this page on ' + new Date().toLocaleString()
+          }
+        }
+      }
+      Vue.createApp(AttributeBinding).mount("#bind-attribute");
     </script>
   </body>
 </html>
