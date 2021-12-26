@@ -34,7 +34,12 @@
           },
         }
       };
-      Vue.createApp(EventHandling).mount("#event-handling");
+      const app = Vue.createApp(EventHandling);
+      const vm = app.mount("#event-handling");
+
+      console.log(vm.$data.message);
+      console.log(vm.message);
+      vm.message = "reverse!";
     </script>
   </body>
 </html>
