@@ -17,29 +17,33 @@
     </style>
   </head>
   <body>
-    <div id="event-handling">
-      <p>{{ message }}</p>
-      <button v-on:click="reverseMessage">Reverse Message</button>
+    <div id="app">
+      <p>Count: {{ count }}</p>
+      <button v-on:click="countUp">CountUp</button>
     </div>
     <script>
-      const EventHandling = {
-        data() {
-          return {
-            message: "Message reverse!",
-          }
-        },
+      const App = {
+        // data() {
+        //   return {
+        //     count: 4,
+        //   }
+        // },
+        data: () => ({
+          count: 4,
+        }),
         methods: {
-          reverseMessage() {
-            this.message = this.message.split('').reverse().join('');
+          countUp() {
+            this.count++;
           },
         }
       };
-      const app = Vue.createApp(EventHandling);
-      const vm = app.mount("#event-handling");
+      const app = Vue.createApp(App);
+      const vm = app.mount("#app");
 
-      console.log(vm.$data.message);
-      console.log(vm.message);
-      vm.message = "reverse!";
+      console.log(vm.count);
+      vm.countUp();
+      console.log(vm.count);
+
     </script>
   </body>
 </html>
