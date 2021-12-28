@@ -19,7 +19,6 @@
   <body>
     <div id="app">
       <p>Count: {{ count }}</p>
-      <button v-on:click="countUp">CountUp</button>
     </div>
     <script>
       const App = {
@@ -28,22 +27,17 @@
             count: 4,
           }
         },
-        methods: {
-          countUp() {
-            this.count++;
-          },
-        },
-        created() {
-          console.log('count is: ' + this.count);
-        }
       };
       const app = Vue.createApp(App);
       const vm = app.mount("#app");
 
       console.log(vm.count);
-      vm.countUp();
-      console.log(vm.count);
 
+      vm.count = 5;
+      console.log(vm.$data.count);
+
+      vm.$data.count = 6;
+      console.log(vm.count);
     </script>
   </body>
 </html>
