@@ -23,18 +23,18 @@
     </div>
     <script>
       const App = {
-        // data() {
-        //   return {
-        //     count: 4,
-        //   }
-        // },
-        data: () => ({
-          count: 4,
-        }),
+        data() {
+          return {
+            count: 4,
+          }
+        },
         methods: {
           countUp() {
             this.count++;
           },
+        },
+        created() {
+          console.log('count is: ' + this.count);
         }
       };
       const app = Vue.createApp(App);
