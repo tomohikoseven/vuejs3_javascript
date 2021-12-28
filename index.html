@@ -17,35 +17,34 @@
     </style>
   </head>
   <body>
-    <div id="app">
-      <p>Count: {{ count }}</p>
-      <span v-bind:title="toTitleDate(new Date())">{{ formatDate(new Date()) }}</span>
-      <button @click="increment">increment</button>
+    <div id="computed-basics">
+      <p>Has Published books:</p>
+      <span>{{ publishedBooksMessage }}</span>
     </div>
     <script>
       const App = {
         data() {
           return {
-            count: 4,
+            author: {
+              name: 'Johe Doe',
+              books: [
+                'Vue 2 - Advanced Guide',
+                'Vue 3 - Basic Guide',
+                'Vue 4 - The Mystery'
+              ]
+            }
           }
         },
-        methods: {
-          increment() {
-            this.count ++;
-          },
-          toTitleDate(d) {
-            return `Now ${d}.`;
-          },
-          formatDate(d) {
-            return d.toLocaleString('jp-JP');
+        computed: {
+          publishedBooksMessage() {
+            return this.author.books.length > 0 ? 'Ye' : 'N';
           }
         }
       };
       const app = Vue.createApp(App);
-      const vm = app.mount("#app");
-      console.log(vm.count);
-      vm.increment();
-      console.log(vm.count);
+      const vm = app.mount("#computed-basics");
+
+      vm.author.books = [];
 
     </script>
   </body>
