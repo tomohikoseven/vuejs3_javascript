@@ -19,6 +19,8 @@
   <body>
     <div id="app">
       <p>Count: {{ count }}</p>
+      <span v-bind:title="toTitleDate(new Date())">{{ formatDate(new Date()) }}</span>
+      <button @click="increment">increment</button>
     </div>
     <script>
       const App = {
@@ -30,6 +32,12 @@
         methods: {
           increment() {
             this.count ++;
+          },
+          toTitleDate(d) {
+            return `Now ${d}.`;
+          },
+          formatDate(d) {
+            return d.toLocaleString('jp-JP');
           }
         }
       };
