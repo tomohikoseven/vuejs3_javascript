@@ -18,7 +18,7 @@
   </head>
   <body>
     <div id="app">
-      <my-component class="foo bar"></my-component>
+      <my-component class="baz"></my-component>
     </div>
     <script>
       const App = {
@@ -29,7 +29,10 @@
       };
       const app = Vue.createApp(App);
       app.component('my-component', {
-        template:`<p class="baz boo">Hi!</p>`
+        template:`
+          <p :class="$attrs.class">Hi!</p>
+          <span>This is a child component.</span>
+        `
       })
       const vm = app.mount("#app");
 
