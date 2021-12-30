@@ -17,42 +17,21 @@
     </style>
   </head>
   <body>
-    <div id="watch-example">
-      <p>
-        Ask a yes/no question:<input v-model="question" />
-      </p>
-      <p>{{ answer }}</p>
+    <div id="app">
+      <my-component class="foo bar"></my-component>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script>
       const App = {
         data() {
           return {
-            question: '',
-            answer: 'Questions usually contain a question mark. ;-)'
           }
         },
-        watch: {
-          question(newQuestion, oldQuestion) {
-            console.log(newQuestion)
-            if(newQuestion.indexOf('?') > -1){
-              this.getAnswer();
-            }
-          }
-        },
-        methods: {
-          getAnswer() {
-            this.answer = 'Thinking ...';
-            axios.get('https://yesno.wtf/api').then(response => {
-              this.answer = response.data.answer;
-            }).catch(error => {
-              this.answer = 'Error! Could not reach the API. ' + error
-            });
-          }
-        }
       };
       const app = Vue.createApp(App);
-      const vm = app.mount("#watch-example");
+      app.component('my-component', {
+        template:`<p class="baz boo">Hi!</p>`
+      })
+      const vm = app.mount("#app");
 
     </script>
   </body>
