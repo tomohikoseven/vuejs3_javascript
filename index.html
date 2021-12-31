@@ -18,28 +18,18 @@
   </head>
   <body>
     <div id="app">
-      <my-component class="baz"></my-component>
-      <button @click="onClick">Button</button>
+      <input v-model="message" placeholder="edit me" />
+      <p>Message is: {{ message }}</p>
     </div>
     <script>
       const App = {
         data() {
           return {
+            message:""
           }
         },
-        methods: {
-          onClick(event) {
-            console.log(event);
-          }
-        }
       };
       const app = Vue.createApp(App);
-      app.component('my-component', {
-        template:`
-          <p :class="$attrs.class">Hi!</p>
-          <span>This is a child component.</span>
-        `
-      })
       const vm = app.mount("#app");
 
     </script>
