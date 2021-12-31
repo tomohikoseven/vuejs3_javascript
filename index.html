@@ -19,6 +19,7 @@
   <body>
     <div id="app">
       <my-component class="baz"></my-component>
+      <button @click="onClick">Button</button>
     </div>
     <script>
       const App = {
@@ -26,6 +27,11 @@
           return {
           }
         },
+        methods: {
+          onClick(event) {
+            console.log(event);
+          }
+        }
       };
       const app = Vue.createApp(App);
       app.component('my-component', {
