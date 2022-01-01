@@ -18,24 +18,25 @@
   </head>
   <body>
     <div id="app">
-      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
-      <label for="jack">Jack</label>
-      <input type="checkbox" id="john" value="John" v-model="checkedNames" />
-      <label for="john">John</label>
-      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
-      <label for="mike">Mike</label>
-      <br />
-      <span>Checked names: {{ checkedNames }}</span>
+      <blog-post v-for="post in posts"
+        :id="post.id"
+        :title="post.title"
+      ></blog-post>
     </div>
     <script>
       const App = {
         data() {
           return {
-            checkedNames: []
+            posts :[{id:1,title:'one'},{id:2,title:'two'},{id:3, title:'three'}]
           }
         },
       };
       const app = Vue.createApp(App);
+      app.component('blog-post',{
+        props:['title'],
+        template:`<h4>{{ title }}</h4>`
+      });
+
       const vm = app.mount("#app");
 
     </script>
