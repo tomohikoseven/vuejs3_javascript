@@ -23,10 +23,15 @@
     </div>
     <script>
       const compB = {
-        template:`<h4>compB</h4>`
+        template:`<h4>compBB</h4>`
       };
       const compA = {
-        template:`<h4>compA</h4>`
+        template:`<h4>compA</h4>
+          <compB></compB>
+        `,
+        components: {
+          'compB': compB
+        },
       };
 
       const App = {
@@ -36,7 +41,6 @@
         },
         components: {
           'component-a':compA,
-          'component-b':compB
         }
       };
       const app = Vue.createApp(App);
