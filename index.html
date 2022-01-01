@@ -18,23 +18,24 @@
   </head>
   <body>
     <div id="app">
-      <blog-post v-for="post in posts"
-        :id="post.id"
-        :title="post.title"
-      ></blog-post>
+      <component-a></component-a>
+      <component-b></component-b>
     </div>
     <script>
       const App = {
         data() {
           return {
-            posts :[{id:1,title:'one'},{id:2,title:'two'},{id:3, title:'three'}]
           }
         },
       };
       const app = Vue.createApp(App);
-      app.component('blog-post',{
-        props:['title'],
-        template:`<h4>{{ title }}</h4>`
+      app.component('component-a',{
+        template:`
+          <h4>component-a</h4>
+        `
+      });
+      app.component('component-b', {
+        template:`<h4>component-b</4>`
       });
 
       const vm = app.mount("#app");
