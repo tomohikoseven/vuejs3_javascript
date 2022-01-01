@@ -22,21 +22,24 @@
       <component-b></component-b>
     </div>
     <script>
+      const compB = {
+        template:`<h4>compB</h4>`
+      };
+      const compA = {
+        template:`<h4>compA</h4>`
+      };
+
       const App = {
         data() {
           return {
           }
         },
+        components: {
+          'component-a':compA,
+          'component-b':compB
+        }
       };
       const app = Vue.createApp(App);
-      app.component('component-a',{
-        template:`
-          <h4>component-a</h4>
-        `
-      });
-      app.component('component-b', {
-        template:`<h4>component-b</4>`
-      });
 
       const vm = app.mount("#app");
 
